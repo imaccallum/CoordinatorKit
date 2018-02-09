@@ -11,9 +11,11 @@
 		823965B81F7EC30D0083D3FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823965B71F7EC30D0083D3FA /* AppDelegate.swift */; };
 		823965BF1F7EC30D0083D3FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 823965BE1F7EC30D0083D3FA /* Assets.xcassets */; };
 		823965C21F7EC30D0083D3FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823965C01F7EC30D0083D3FA /* LaunchScreen.storyboard */; };
-		823965DA1F7EC32F0083D3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823965D51F7EC32F0083D3FA /* Router.swift */; };
+		823965DA1F7EC32F0083D3FA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823965D51F7EC32F0083D3FA /* Navigator.swift */; };
 		823965DD1F7EC32F0083D3FA /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823965D81F7EC32F0083D3FA /* Presentable.swift */; };
 		823965DE1F7EC32F0083D3FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823965D91F7EC32F0083D3FA /* Coordinator.swift */; };
+		823DD9EB202BC33E00A35BEF /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823DD9EA202BC33E00A35BEF /* Builder.swift */; };
+		823DD9ED202BC60400A35BEF /* Dependancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823DD9EC202BC60400A35BEF /* Dependancy.swift */; };
 		82AAD7EA1F856E9A00EE25F1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAD7E91F856E9A00EE25F1 /* AppCoordinator.swift */; };
 		82AAD7EC1F856ECA00EE25F1 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAD7EB1F856ECA00EE25F1 /* DeepLink.swift */; };
 		82AAD7F01F85703200EE25F1 /* CoordinatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8239659A1F7EC2EB0083D3FA /* CoordinatorKit.framework */; };
@@ -63,10 +65,12 @@
 		823965BE1F7EC30D0083D3FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		823965C11F7EC30D0083D3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		823965C31F7EC30D0083D3FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		823965D51F7EC32F0083D3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		823965D51F7EC32F0083D3FA /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		823965D81F7EC32F0083D3FA /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		823965D91F7EC32F0083D3FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		823965E81F7EC4850083D3FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		823DD9EA202BC33E00A35BEF /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		823DD9EC202BC60400A35BEF /* Dependancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependancy.swift; sourceTree = "<group>"; };
 		82AAD7E91F856E9A00EE25F1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		82AAD7EB1F856ECA00EE25F1 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		82D3BA111FAA3D6C007F5230 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -123,11 +127,13 @@
 		8239659B1F7EC2EB0083D3FA /* CoordinatorKit */ = {
 			isa = PBXGroup;
 			children = (
+				823DD9EA202BC33E00A35BEF /* Builder.swift */,
+				823DD9EC202BC60400A35BEF /* Dependancy.swift */,
 				823965D91F7EC32F0083D3FA /* Coordinator.swift */,
 				82D8A9C51F8ED4A8005DDE3B /* WindowRouter.swift */,
 				82D8A9C31F8ED316005DDE3B /* WindowCoordinator.swift */,
 				823965D81F7EC32F0083D3FA /* Presentable.swift */,
-				823965D51F7EC32F0083D3FA /* Router.swift */,
+				823965D51F7EC32F0083D3FA /* Navigator.swift */,
 				8239659C1F7EC2EB0083D3FA /* CoordinatorKit.h */,
 				823965E81F7EC4850083D3FA /* Info.plist */,
 			);
@@ -319,9 +325,11 @@
 			files = (
 				82D8A9C41F8ED316005DDE3B /* WindowCoordinator.swift in Sources */,
 				823965DD1F7EC32F0083D3FA /* Presentable.swift in Sources */,
+				823DD9ED202BC60400A35BEF /* Dependancy.swift in Sources */,
 				823965DE1F7EC32F0083D3FA /* Coordinator.swift in Sources */,
-				823965DA1F7EC32F0083D3FA /* Router.swift in Sources */,
+				823965DA1F7EC32F0083D3FA /* Navigator.swift in Sources */,
 				82D8A9C61F8ED4A8005DDE3B /* WindowRouter.swift in Sources */,
+				823DD9EB202BC33E00A35BEF /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

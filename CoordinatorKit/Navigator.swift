@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol RouterType: class, Presentable {
+public protocol NavigatorType: class, Presentable {
 	var navigationController: UINavigationController { get }
 	var rootViewController: UIViewController? { get }
 	func present(_ module: Presentable, animated: Bool)
@@ -12,7 +12,7 @@ public protocol RouterType: class, Presentable {
 }
 
 
-final public class Router: NSObject, RouterType, UINavigationControllerDelegate {
+final public class Navigator: NSObject, NavigatorType, UINavigationControllerDelegate {
 	
 	private var completions: [UIViewController : () -> Void]
 	

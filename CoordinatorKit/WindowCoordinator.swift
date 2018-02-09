@@ -6,17 +6,17 @@
 //
 
 public protocol WindowCoordinatorType: BaseCoordinatorType {
-	var router: WindowRouterType { get }
+	var navigator: WindowNavigatorType { get }
 }
 
 open class WindowCoordinator<DeepLinkType>: NSObject, WindowCoordinatorType {
 	
 	public var childCoordinators: [PresentableCoordinator<DeepLinkType>] = []
 	
-	open var router: WindowRouterType
+	open var navigator: WindowNavigatorType
 	
-	public init(router: WindowRouterType) {
-		self.router = router
+	public init(navigator: WindowNavigatorType) {
+		self.navigator = navigator
 		super.init()
 	}
 	

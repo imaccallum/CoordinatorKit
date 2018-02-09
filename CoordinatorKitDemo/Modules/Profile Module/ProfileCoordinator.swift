@@ -15,14 +15,14 @@ class ProfileCoordinator: Coordinator<DeepLink> {
 	let viewController = UIViewController()
 	private let store: StoreType
 	
-	init(router: RouterType, store: StoreType) {
+	init(navigator: NavigatorType, store: StoreType) {
 		self.store = store
-		super.init(router: router)
+		super.init(navigator: navigator)
 		viewController.view.backgroundColor = .blue
 	}
 	
 	// We must override toPresentable() so it doesn't
-	// default to the router's navigationController
+	// default to the navigator's navigationController
 	override func toPresentable() -> UIViewController {
 		return viewController
 	}
