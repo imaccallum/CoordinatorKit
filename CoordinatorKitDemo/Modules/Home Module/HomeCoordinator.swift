@@ -18,24 +18,24 @@ class HomeCoordinator: Coordinator<DeepLink> {
 		return controller
 	}()
 	
-	init(router: RouterType, store: StoreType) {
+	init(navigator: NavigatorType, store: StoreType) {
 		self.store = store
-		super.init(router: router)
-		router.setRootModule(homeViewController, hideBar: false)
+		super.init(navigator: navigator)
+		navigator.setRootModule(homeViewController, hideBar: false)
 	}
 }
 
 extension HomeCoordinator: HomeViewControllerDelegate {
 	func controllerDidPressButton(_ controller: HomeViewController) {
 		
-		let coordinator = ProfileCoordinator(router: router, store: store)
+		let coordinator = ProfileCoordinator(navigator: navigator, store: store)
 		
 		// Maintain a strong reference to avoid deallocation
 		addChild(coordinator)
 		coordinator.start()
 		
 		// Avoid retain cycles and don't forget to remove the child when popped
-		router.push(coordinator, animated: true) { [weak self, weak coordinator] in
+		navigator.push(coordinator, animated: true) { [weak self, weak coordinator] in
 			self?.removeChild(coordinator)
 			print("Pooped!")
 		}

@@ -9,7 +9,7 @@ import UIKit
 import CoordinatorKit
 
 // This entire module is reusable and presentable from anywhere
-// All you need is a router
+// All you need is a navigator
 class AuthCoordinator: Coordinator<DeepLink> {
 	
     let authViewController = AuthViewController()
@@ -17,9 +17,9 @@ class AuthCoordinator: Coordinator<DeepLink> {
 	var onCancel: (() -> Void)?
     var onAuthenticated: ((String) -> ())?
     
-    override init(router: RouterType) {
-        super.init(router: router)
-        router.setRootModule(authViewController, hideBar: false)
+    override init(navigator: NavigatorType) {
+        super.init(navigator: navigator)
+        navigator.setRootModule(authViewController, hideBar: false)
         authViewController.delegate = self
     }
 	

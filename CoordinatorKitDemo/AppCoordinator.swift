@@ -20,25 +20,25 @@ class AppCoordinator: Coordinator<DeepLink>, UITabBarControllerDelegate {
 	lazy var homeCoordinator: HomeCoordinator = {
 		let navigationController = UINavigationController()
 		navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-		let router = Router(navigationController: navigationController)
-		let coordinator = HomeCoordinator(router: router, store: store)
+		let navigator = Navigator(navigationController: navigationController)
+		let coordinator = HomeCoordinator(navigator: navigator, store: store)
 		return coordinator
 	}()
 	
 	lazy var accountCoordinator: AccountCoordinator = {
 		let navigationController = UINavigationController()
 		navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-		let router = Router(navigationController: navigationController)
-		let coordinator = AccountCoordinator(router: router, store: store)
+		let navigator = Navigator(navigationController: navigationController)
+		let coordinator = AccountCoordinator(navigator: navigator, store: store)
 		return coordinator
 	}()
 	
     private let store: StoreType
     
-    init(router: RouterType, store: StoreType) {
+    init(navigator: NavigatorType, store: StoreType) {
         self.store = store
-        super.init(router: router)
-		router.setRootModule(tabBarController, hideBar: true)
+        super.init(navigator: navigator)
+		navigator.setRootModule(tabBarController, hideBar: true)
         tabBarController.delegate = self
 		setTabs([homeCoordinator, accountCoordinator])
     }
@@ -79,23 +79,23 @@ class AppCoordinator: Coordinator<DeepLink>, UITabBarControllerDelegate {
 	// Present a vertical flow
 	func presentAuthFlow() {
 		let navigationController = UINavigationController()
-		let navRouter = Router(navigationController: navigationController)
-		let coordinator = AuthCoordinator(router: navRouter)
+		let navNavigator = Navigator(navigationController: navigationController)
+		let coordinator = AuthCoordinator(navigator: navNavigator)
 		
 		coordinator.onCancel = { [weak self, weak coordinator] in
-			self?.router.dismissModule(animated: true, completion: nil)
+			self?.navigator.dismissModule(animated: true, completion: nil)
 			self?.removeChild(coordinator)
 		}
 		
 		coordinator.onAuthenticated = { [weak self, weak coordinator] token in
 			self?.store.token = token
-			self?.router.dismissModule(animated: true, completion: nil)
+			self?.navigator.dismissModule(animated: true, completion: nil)
 			self?.removeChild(coordinator)
 		}
 		
 		addChild(coordinator)
 		coordinator.start()
-		router.present(coordinator, animated: true)
+		navigator.present(coordinator, animated: true)
 	}
 	
 	

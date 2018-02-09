@@ -14,10 +14,10 @@ class AccountCoordinator: Coordinator<DeepLink> {
 	
 	let accountViewController = UIViewController()
 	
-	init(router: RouterType, store: StoreType) {
+	init(navigator: NavigatorType, store: StoreType) {
 		self.store = store
-		super.init(router: router)
+		super.init(navigator: navigator)
 		accountViewController.view.backgroundColor = .magenta
-		router.setRootModule(accountViewController, hideBar: false)
+		navigator.setRootModule(accountViewController, hideBar: false)
 	}
 }

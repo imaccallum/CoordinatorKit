@@ -1,5 +1,5 @@
 //
-//  WindowRouter.swift
+//  WindowNavigator.swift
 //  CoordinatorKit
 //
 //  Created by Ian MacCallum on 10/11/17.
@@ -8,14 +8,14 @@
 import UIKit
 import SafariServices
 
-public protocol WindowRouterType: class {
+public protocol WindowNavigatorType: class {
 	var window: UIWindow { get }
 	init(window: UIWindow)
 	func setRootModule(_ module: Presentable)
 }
 
 
-final public class WindowRouter: NSObject, WindowRouterType {
+final public class WindowNavigator: NSObject, WindowNavigatorType {
 	
 	public unowned let window: UIWindow
 	
